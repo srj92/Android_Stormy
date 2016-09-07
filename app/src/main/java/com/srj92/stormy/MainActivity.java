@@ -101,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     try {
-                        Log.v(TAG, response.body().string());
+
+                        //Log.v(TAG, response.body().string());
                         if (response.isSuccessful()) {
                             String jsonData = response.body().string();
                             mCurrentWeather = getCurrentWeatherDetails(jsonData);
