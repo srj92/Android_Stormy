@@ -1,4 +1,6 @@
-package com.srj92.stormy;
+package com.srj92.stormy.weather;
+
+import com.srj92.stormy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +9,7 @@ import java.util.TimeZone;
 /**
  * Created by surajgupta on 05/09/16.
  */
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private long mTime;
     private double mTemperature;
@@ -16,9 +18,9 @@ public class CurrentWeather {
     private String summary;
     private String mTimeZone;
 
-    public CurrentWeather() {}
+    public Current() {}
 
-    public CurrentWeather(String icon, long time, double temperature, double humidity, double precipChance, String summary) {
+    public Current(String icon, long time, double temperature, double humidity, double precipChance, String summary) {
         mIcon = icon;
         mTime = time;
         mTemperature = temperature;
@@ -53,40 +55,7 @@ public class CurrentWeather {
     }
 
     public int getIconId() {
-        int iconId = R.drawable.clear_day;
-
-        if (mIcon.equals("clear-day")) {
-            iconId = R.drawable.clear_day;
-        }
-        else if (mIcon.equals("clear-night")) {
-            iconId = R.drawable.clear_night;
-        }
-        else if (mIcon.equals("rain")) {
-            iconId = R.drawable.rain;
-        }
-        else if (mIcon.equals("snow")) {
-            iconId = R.drawable.snow;
-        }
-        else if (mIcon.equals("sleet")) {
-            iconId = R.drawable.sleet;
-        }
-        else if (mIcon.equals("wind")) {
-            iconId = R.drawable.wind;
-        }
-        else if (mIcon.equals("fog")) {
-            iconId = R.drawable.fog;
-        }
-        else if (mIcon.equals("cloudy")) {
-            iconId = R.drawable.cloudy;
-        }
-        else if (mIcon.equals("partly-cloudy-day")) {
-            iconId = R.drawable.partly_cloudy;
-        }
-        else if (mIcon.equals("partly-cloudy-night")) {
-            iconId = R.drawable.cloudy_night;
-        }
-
-        return iconId;
+        return Forecast.getIconId(mIcon);
     }
 
     public long getTime() {
@@ -117,8 +86,6 @@ public class CurrentWeather {
         double precipPercentage = mPrecipChance * 100;
         return (int)Math.round(precipPercentage);
     }
-
-
 
     public void setPrecipChance(double precipChance) {
         mPrecipChance = precipChance;
